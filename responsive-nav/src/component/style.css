@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap');
+*{
+  margin:0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
+nav {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+    background-color: teal;
+    padding: 20px 80px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+
+}
+ nav .logo{
+   
+    padding-left:20px;
+    font-family: 'Roboto Slab', serif;
+    
+    
+  }
+
+.nav-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:10px;
+ 
+  }
+  .link{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color:#fff;
+    transition: 0.2s ease-in-out;
+  }
+  .link:hover{
+    color:#0fec60;
+  }
+ 
+   #icons{
+    display: none;
+
+  }
+  /* for making mobile responsive */
+ @media(max-width:768px){
+   
+    .nav-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        /* seprate nav links from nav bar*/
+        top:71px;
+        right: -100px;
+        width: 300px;
+        background-color: rgb(15, 128, 90);
+        height: 100vh;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        padding: 40px 0px 0px 10px;
+       
+        transition: 0.3s ease-in-out;
+       
+    }
+   
+    .nav-container.active {
+        right:-300px;
+        
+    }
+   #icons{
+    display:block;
+    color:#fff;
+    cursor: pointer;
+    ;
+  }
+
+}
+  

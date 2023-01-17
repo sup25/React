@@ -1,0 +1,43 @@
+.container{
+  display: grid;
+  background-color: aqua;
+ 
+  grid-template-columns: auto;
+  padding:20px;
+  text-align: center;
+  
+}
+h2{
+  border-bottom-style: dotted; 
+}
+.price{
+  font-style: italic;
+  color: goldenrod;
+  font-weight: bolder;
+}
+
+.image{
+  height: 400px;
+  width:300px;
+  border:2px solid teal;
+  box-shadow: 0 0 5px rgb(28, 27, 27);
+}
+
+.description{
+  
+  padding: 40px;
+  background-color: #00968842;
+  
+  font-weight: 400;
+  border-bottom: 1px solid white;
+}
+.cat{
+  color: black;
+  background-color: rgba(137, 43, 226, 0.266);
+  max-width: fit-content;
+  padding: 5px;
+  
+  
+  
+  
+}

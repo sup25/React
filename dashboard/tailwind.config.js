@@ -7,6 +7,10 @@ module.exports = {
     fontFamily: {
       Righteous: ['Righteous']
     },
+    backgroundImage: {
+      'login': "url('./login.jpg')",
+      'logo': "url('./logo.jpg')",
+    },
   },
   plugins: [],
 }

@@ -10,6 +10,7 @@ module.exports = {
     backgroundImage: {
       'login': "url('./login.jpg')",
       'logo': "url('./logo.jpg')",
+      'signup': "url('./logout.jpg')",
     },
   },
   plugins: [],

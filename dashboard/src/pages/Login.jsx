@@ -1,48 +1,109 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+
+    const [inputValue, setInputValue] = useState({
+        email: '',
+        password: '',
+    })
+
+
+    console.log(inputValue)
+
+    const getdata = (e) => {
+        const { value, name } = e.target
+        setInputValue(() => {
+            return {
+                ...inputValue, [name]: value
+            }
+        })
+    }
+
+    const getuserArr = localStorage.getItem('user');
+    console.log(getuserArr)
+
+
+    const submit = (e) => {
+        e.preventDefault();
+        const { email, password } = inputValue
+
+        if (email === "") {
+            alert("email is required")
+        } else if (!email.includes('@')) {
+            alert("please enter valid email address")
+        } else if (password === "") {
+            alert("password is required")
+        } else if (password.length < 5) {
+            alert(" password length must be greater than five")
+        } else {
+            // if (getuserArr && getuserArr.length) {
+            //     const userdata = JSON.parse(getuserArr)
+            //     console.log(userdata)
+            // }
+        }
+
+
+    }
+
+
+
+
+
+
+
+
     return (
-        <div class="w-[1349px] h-[750px] m-0 bg-[#8D99AE] flex justify-center   ">
+        <div class=" h-[657px] m-0 justify-center max-w-[1366px] bg-[#8D99AE] flex  ">
+            <div>
 
+            </div>
             {/* making design */}
-            <div class="w-[25rem] h-[40rem]  relative top-[2rem]  " >
+            <div class="w-[400px] h-[640px]   pt-[30px] " >
 
-                <div class="bg-login bg-cover w-[400px] h-[640px]  bg-center  ">
-                    <div class="w-[320px] h-[400px] bg-red-500  top-[150px] left-[65px] relative backdrop-blur-sm bg-white/50" >
-                        <h1 class="text-xl text-[#555454] text-center align-middle relative top-[150px] ">"We've saved you a seat."</h1>
-                        <h1 class="text-5xl text-[#573D1C] text-center align-middle relative font-semibold top-[150px]">Welcome back!</h1>
-                        <div class="bg-logo w-[100px] h-[100px] bg-center bg-cover top-[190px] left-[120px] relative  " />
+                <div class="bg-login bg-cover w-[400px] h-[600px]  bg-center  ">
+                    <div class="w-[320px] h-[350px] bg-red-500  top-[150px] left-[42px] relative backdrop-blur-sm bg-white/50" >
+                        <h1 class="text-xl text-[#555454] text-center align-middle relative top-[100px] ">"We've saved you a seat."</h1>
+                        <h1 class="text-5xl text-[#573D1C] text-center align-middle relative font-semibold top-[100px]">Welcome back!</h1>
+                        <div class="bg-logo w-[100px] h-[100px] bg-center bg-cover top-[110px] left-[100px] relative  " />
                     </div>
 
                 </div>
             </div>
             {/* making form ui */}
 
-            <div class="w-full max-w-xs">
-                <form class=" bg-[#2B2D42] w-[30rem] h-[40rem] relative top-[2rem]  px-8 pt-[200px] inline-block align-middle ">
+            <div class=" w-[350px] m-0 pt-[30px]">
+                <form class=" bg-[#2B2D42] w-[400px] h-[600px] relative  px-8 pt-[150px] inline-block align-middle ">
                     <div class="mb-4">
-                        <label class="block text-white text-xl font-bold mb-2" for="username">
-                            Username
+                        <label class="block text-white text-xl font-bold mb-2" for="email">
+                            Email
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" />
+                        <input onChange={getdata} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="email" />
                     </div>
                     <div class="mb-6">
                         <label class="block text-white text-xl font-bold mb-2" for="password">
                             Password
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
+                        <input onChange={getdata} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="******************" />
 
                     </div>
                     <div class="flex items-center justify-between">
-                        <button class="bg-[#8D99AE] hover:bg-[#5a77a9] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button onClick={submit} class="bg-[#8D99AE] hover:bg-[#5a77a9] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             Sign In
                         </button>
                         <p class=" text-white"  >
                             Don't have account <a class="font-bold cursor-pointer align-baseline text-sm text-[#8D99AE] hover:text-[#5a77a9]"><Link to="/signup">Sign Up</Link></a>
                         </p>
                     </div>
+                    <div class="flex items-center justify-between pt-[120px] pl-[250px]">
+                        <button class="bg-[#847f8213] mb-[50px] flex hover:bg-[#5a77a9] text-white font-bold py-2 px-4 rounded focus:outline-none  focus:shadow-outline" type="button">
+                            <Link to='/'>Home</Link>
+                        </button>
+                    </div>
+
                 </form>
+
+
 
             </div>
 

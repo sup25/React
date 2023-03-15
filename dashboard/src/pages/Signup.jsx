@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const Signup = () => {
-
     const [inputValue, setInputValue] = useState({
 
         username: '',
@@ -39,11 +38,12 @@ const Signup = () => {
             alert(" password length must be greater than five")
         } else {
             console.log("data added successfully")
-            console.log(inputValue)
-            localStorage.setItem('user', JSON.stringify([inputValue]))
+            const existingData = JSON.parse(localStorage.getItem("user")) || [];
+            const newData = [...existingData, inputValue];
+            console.log(newData);
+            localStorage.setItem("user", JSON.stringify(newData));
+
         }
-
-
     }
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
@@ -8,8 +8,9 @@ const Login = () => {
         password: '',
     })
 
+    const [loggedInUser, setLoggedInUser] = useState(null);
 
-    console.log(inputValue)
+    const navigate = useNavigate();
 
     const getdata = (e) => {
         const { value, name } = e.target
@@ -20,8 +21,12 @@ const Login = () => {
         })
     }
 
-    const getuserArr = localStorage.getItem('user');
-    console.log(getuserArr)
+    const getuserArr = JSON.parse(localStorage.getItem("user"));
+
+    const checkIfUserMatch = (email, password) => {
+        const user = getuserArr.find(user => user.email === email && user.password === password);
+        return user ? user : null;
+    };
 
 
     const submit = (e) => {
@@ -37,21 +42,16 @@ const Login = () => {
         } else if (password.length < 5) {
             alert(" password length must be greater than five")
         } else {
-            // if (getuserArr && getuserArr.length) {
-            //     const userdata = JSON.parse(getuserArr)
-            //     console.log(userdata)
-            // }
+            const user = checkIfUserMatch(email, password);
+            if (user) {
+                console.log("login successful", user);
+                setLoggedInUser(user);
+                navigate('/', { state: { user } });
+            } else {
+                console.log("error sigining in ");
+            }
         }
-
-
     }
-
-
-
-
-
-
-
 
     return (
         <div class=" h-[657px] m-0 justify-center max-w-[1366px] bg-[#8D99AE] flex  ">

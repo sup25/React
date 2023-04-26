@@ -9,13 +9,12 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          {/* it allows a component to access the dynamic parts of the URL as key-value pairs.
-          It is used to extract information from the URL and use it to render specific content
-            within the component. 
-            Not using useParams means that the component is not able to access the dynamic parts of the
-            URL and therefore cannot use that information to render specific content. 
-            The component would have to rely on props or state to determine what to render.
-       */}
+          {/* allows you to access the parameters of the current URL.
+          This can be useful if you want to dynamically render content
+           based on the URL parameters.
+            For example, if you have a blog application,
+             you may want to render different articles based on the article ID in the URL.
+             */}
           <Route path='/' element={<Home />} />
           <Route path='/about/' element={<About />} />
 
